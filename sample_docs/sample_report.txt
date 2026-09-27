@@ -1,0 +1,40 @@
+Quarterly Research Summary: Renewable Energy Adoption
+
+Executive Summary
+This report examines the adoption of renewable energy sources across
+residential and commercial sectors over the past year. Solar power
+installations grew by 34% year over year, driven largely by falling
+panel costs and expanded government incentive programs. Wind energy
+adoption grew more modestly, at 11%, primarily in coastal and
+high-wind-corridor regions.
+
+Key Findings
+1. Residential solar adoption is now most concentrated in suburban
+   areas with high average sunlight exposure and supportive local
+   permitting processes.
+2. Battery storage attachment rates rose sharply, with 61% of new
+   solar installations in the past quarter including a home battery,
+   up from 38% the previous year.
+3. Commercial adoption lagged residential adoption, constrained mainly
+   by longer approval timelines and higher upfront capital requirements.
+4. Wind energy remains geographically concentrated, with over 70% of
+   new installations occurring in just four regions.
+
+Challenges
+Grid interconnection delays remain the most commonly cited barrier to
+faster renewable adoption, followed by financing complexity for
+commercial projects and a shortage of certified installers in
+several rapidly growing markets.
+
+Recommendations
+The report recommends streamlining interconnection approval timelines,
+expanding installer certification programs, and extending incentive
+programs to commercial properties to close the adoption gap between
+residential and commercial sectors.
+
+Conclusion
+Overall, renewable energy adoption continued to accelerate this
+quarter, with residential solar leading growth. Addressing
+interconnection delays and installer shortages would likely unlock
+significantly faster adoption across both residential and commercial
+markets going forward.
