@@ -1,102 +1,217 @@
-# Document Intelligence System
 
-A Document Intelligence application built using NLP, Retrieval-Augmented Generation (RAG), and Generative AI.
+# 📄 Document Intelligence System
 
-The system allows users to upload PDF or TXT documents and ask questions about their content using natural language. It retrieves the most relevant parts of the documents and uses a Groq-hosted LLM to generate grounded answers with source information.
+A Retrieval-Augmented Generation (RAG), Natural Language Processing (NLP) application built with Python and Streamlit that allows users to upload PDF and TXT documents, ask questions, generate summaries, extract keywords, and view document statistics.
 
-## Features
+The application retrieves relevant information from uploaded documents and generates answers using a Groq-hosted LLM with source references.
+
+## 🚀 Live Demo
+
+🔗 **[Try Document Intelligence](https://documentintelligence-hsfrpxxh6yz7jfbskerzrh.streamlit.app/)**
+
+> Upload a PDF or TXT document and ask questions based on its content.
+
+## ✨ Features
 
 - Upload PDF and TXT documents
-- Extract and clean document text
-- Split documents into meaningful chunks
-- Generate semantic embeddings using Hugging Face
-- Store and retrieve embeddings using ChromaDB
-- Natural-language question answering using RAG
-- Source information for generated answers
-- Document summarization
-- Keyword extraction
-- Document statistics
-- Multiple document support
-- Error handling for invalid or empty documents
+- Extract and process document text
+- Split documents into smaller chunks
+- Generate embeddings using Hugging Face
+- Store and retrieve document chunks using ChromaDB
+- Ask questions using Retrieval-Augmented Generation (RAG)
+- Generate answers using Groq LLM
+- Display source references (filename, page, and chunk)
+- Generate document summaries
+- Extract important keywords
+- View document statistics
+- Handle empty documents and unsupported files
 
-## NLP Used
+## 🧠 How RAG Works
 
-NLP is used throughout the document processing and question-answering pipeline:
+Retrieval-Augmented Generation (RAG) combines document retrieval with language model generation.
 
-1. Text extraction and preprocessing
-2. Text cleaning
-3. Text chunking
-4. Semantic text embeddings
-5. Similarity-based semantic search
-6. Keyword extraction
-7. Document summarization
-8. Natural-language question answering
+### Workflow
 
-## RAG Pipeline
+1. Upload a PDF or TXT document.
+2. Extract the text from the document.
+3. Split the text into smaller chunks.
+4. Convert the chunks into embeddings.
+5. Store embeddings in ChromaDB.
+6. Convert the user's question into an embedding.
+7. Retrieve the most relevant document chunks.
+8. Pass the retrieved context to the Groq LLM.
+9. Generate an answer based on the retrieved content.
+10. Display the answer with source references.
 
-PDF/TXT Document
-↓
+This approach helps the application answer questions using the uploaded documents instead of relying only on the LLM's general knowledge.
+
+## 🏗️ System Architecture
+
+```text
+User
+  |
+  v
+Streamlit Interface
+  |
+  v
+Upload PDF / TXT Document
+  |
+  v
 Text Extraction
-↓
-Text Cleaning
-↓
-Text Chunking
-↓
+  |
+  v
+Text Cleaning and Chunking
+  |
+  v
 Hugging Face Embeddings
-↓
-ChromaDB
-↓
+  |
+  v
+ChromaDB Vector Store
+  |
+  v
 User Question
-↓
-Question Embedding
-↓
-Similarity Search
-↓
+  |
+  v
+Similarity Search (Top-K)
+  |
+  v
 Relevant Document Chunks
-↓
+  |
+  v
 Groq LLM
-↓
-Grounded Answer + Sources
+  |
+  v
+Answer + Source References
+  |
+  v
+Streamlit Interface
+```
 
-## Technologies
+## 🛠️ Technologies Used
 
-- Python
-- Streamlit
-- LangChain
-- PyMuPDF
-- Hugging Face
-- Sentence Transformers
-- ChromaDB
-- Groq
-- NLTK
+| Technology | Purpose |
+|---|---|
+| Python | Application development |
+| Streamlit | Web interface |
+| PyMuPDF | Extract text from PDF documents |
+| LangChain | Text splitting and RAG components |
+| Hugging Face Embeddings | Convert text into numerical vectors |
+| ChromaDB | Store and search document embeddings |
+| Groq | LLM-based answer generation |
+| python-dotenv | Manage environment variables |
 
-## Project Structure
+## 📂 Project Structure
 
+```text
 DocumentIntelligence/
+│
 ├── app.py
 ├── requirements.txt
 ├── README.md
 ├── .env.example
 ├── .gitignore
-├── sample_docs/
+│
 ├── data/
+│   └── uploads/
+│
 ├── chroma_db/
-├── src/
-│   ├── document_loader.py
-│   ├── text_processing.py
-│   ├── embeddings.py
-│   ├── vector_store.py
-│   ├── rag_pipeline.py
-│   ├── summarizer.py
-│   └── utils.py
-└── tests/
+│
+└── src/
+    ├── document_loader.py
+    ├── text_processing.py
+    ├── embeddings.py
+    ├── vector_store.py
+    ├── rag_pipeline.py
+    ├── summarizer.py
+    └── utils.py
+```
 
-## How It Works
+## ⚙️ Local Installation
 
-The uploaded document is first converted into text and divided into smaller chunks. Each chunk is converted into a semantic embedding and stored in ChromaDB.
+### 1. Clone the repository
 
-When the user asks a question, the question is converted into an embedding and compared with the stored document embeddings. The most relevant chunks are retrieved and passed to the Groq LLM as context. The LLM then generates an answer based on the retrieved information.
+```bash
+git clone https://github.com/HariniRavi26/DocumentIntelligence.git
+cd DocumentIntelligence
+```
 
-## Project Outcome
+### 2. Create a virtual environment
 
-The system combines NLP, semantic search, vector databases, RAG, and Generative AI to provide question answering and document analysis from user-provided documents.
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+```
+
+### 3. Install dependencies
+
+```powershell
+pip install -r requirements.txt
+```
+
+### 4. Configure the Groq API key
+
+Create a `.env` file in the project root.
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+Do not upload your API key to GitHub.
+
+### 5. Run the application
+
+```powershell
+streamlit run app.py
+```
+
+The application will open in your browser at:
+
+```text
+http://localhost:8501
+```
+
+## 🔍 Key Concepts
+
+### RAG
+
+Retrieves relevant information from documents and uses it as context for generating answers.
+
+### Embeddings
+
+Converts text into numerical vectors that represent its meaning.
+
+### ChromaDB
+
+Stores embeddings and supports similarity-based document retrieval.
+
+### Groq LLM
+
+Generates responses using the relevant document context.
+
+### Source References
+
+Displays document metadata such as filename, page, and chunk to help identify the source of the answer.
+
+## ☁️ Streamlit Cloud Deployment
+
+1. Push the project to GitHub.
+2. Open Streamlit Community Cloud.
+3. Connect your GitHub repository.
+4. Select the `main` branch.
+5. Set the main file to `app.py`.
+6. Add the `GROQ_API_KEY` in Streamlit Secrets.
+7. Deploy the application.
+8. Copy the deployed application URL.
+9. Update the Live Demo link in this README.
+
+
+## 🎯 Project Objective
+
+The objective of this project is to develop a document-based question-answering system using RAG, embeddings, vector databases, and large language models.
+
+## 👩‍💻 Author
+
+**Harini Ravi**
+
+- GitHub: [HariniRavi26](https://github.com/HariniRavi26)
+- LinkedIn: [Harini Ravi](https://linkedin.com/in/harini-ravi-658a68315)
